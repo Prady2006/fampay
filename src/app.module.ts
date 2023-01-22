@@ -1,10 +1,18 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ContentModule } from './content/content.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ContentModule,
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.CONNECTION_STRING || 
+      "mongodb://localhost/content",
+      {connectionName: "contents"}
+    )
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
