@@ -1,14 +1,16 @@
+import { Type } from "class-transformer"
 import { IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive } from "class-validator"
 
 export class GetContentDto{
 
     @IsOptional()
     @IsInt()
+    @Type(()=>Number)
     @IsPositive()
-    limit: number
+    limit?: number
 
     @IsOptional()
     @IsInt()
-    @IsPositive()
-    skip: number
+    @Type(()=>Number)
+    skip?: number
 }

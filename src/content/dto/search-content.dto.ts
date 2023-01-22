@@ -1,4 +1,5 @@
 import { IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive } from "class-validator"
+import { Type } from "class-transformer"
 
 export class SearchContentDto{
     @IsOptional()
@@ -11,6 +12,7 @@ export class SearchContentDto{
 
     @IsOptional()
     @IsInt()
+    @Type(()=>Number)
     @IsPositive()
     limit: number
 

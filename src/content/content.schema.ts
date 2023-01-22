@@ -5,14 +5,17 @@ export type ContentDocument = HydratedDocument<Content>;
 
 @Schema()
 export class Content   {
-    @Prop()
+
+    @Prop({unique: true })
     title : string
     
     @Prop()
     description: string
     
-    @Prop()
-    datetime: Date
-}
+    @Prop({ index: true })
+    publishTime: Date
 
+    @Prop()
+    thumbnails: string[]
+}
 export const ContentSchema = SchemaFactory.createForClass(Content)
